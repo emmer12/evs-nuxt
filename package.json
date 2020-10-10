@@ -1,0 +1,31 @@
+{
+  "name": "evs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/auth": "^4.9.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cxlt-vue2-toastr": "^1.1.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.27",
+    "multer": "^1.4.2",
+    "node-sass": "^4.14.1",
+    "nodemailer": "^6.4.11",
+    "nuxt": "^2.14.0",
+    "sass-loader": "^9.0.3",
+    "semantic-ui": "^2.4.2",
+    "vue-cool-lightbox": "^2.4.1",
+    "vue-social-sharing": "^3.0.0-beta.11",
+    "vue-validate": "^1.0.1"
+  },
+  "devDependencies": {}
+}
