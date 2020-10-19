@@ -109,6 +109,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap");
 $color: #8783ce;
 $secondary: rgb(86, 79, 204);
+$secondary2: rgb(86, 79, 204);
 .heading {
   & h1 {
     color: #555;
