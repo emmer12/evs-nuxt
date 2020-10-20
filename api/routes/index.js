@@ -148,7 +148,7 @@ router.post('/upload-file',middleware.authenticate,function(req,res,next){
         }else{
             res.status(200).json({
                 success:true,
-                url:`http://localhost:3000/uploads/${req.file.filename}`,
+                url:`${process.env.URL}/uploads/${req.file.filename}`,
                 filename:`${req.file.filename}`
               })
           }

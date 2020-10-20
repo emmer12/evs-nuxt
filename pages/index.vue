@@ -6,8 +6,10 @@
         <div class="column wow zoomIn" style="cursor:pointer" @click="setIndex(0)">
           <i class="play icon" style="font-size:40px;line-height:40px"></i>
         </div>
-        <h1 v-if="feeds.length" class="wow fadeIn">{{ feeds[0].title }}</h1>
-        <h4 v-if="feeds.length" class="wow fadeInUp">{{ feeds[0].category }}</h4>
+        <h1 v-if="feeds && feeds.length" class="wow fadeIn">{{ feeds[0].title }}</h1>
+        <h4 v-if="feeds && feeds.length" class="wow fadeInUp">{{ feeds[0].category }}</h4><br>
+        <nuxt-link :to="{name:'contact'}" class="ui button red">Get in touch</nuxt-link>
+    
       </div>
     </div>
 
@@ -109,7 +111,6 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap");
 $color: #8783ce;
 $secondary: rgb(86, 79, 204);
-$secondary2: rgb(86, 79, 204);
 .heading {
   & h1 {
     color: #555;
@@ -134,12 +135,14 @@ $secondary2: rgb(86, 79, 204);
 
 .banner {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("~assets/images/works/w8.jpg");
+    url("~assets/images/works/w13.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 90vh;
   width: 100vw;
   text-align: center;
+  // clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 100% 100%, 85% 100%, 15% 100%, 0 100%, 0% 85%);
+  clip-path: polygon(0% 15%, 0 0, 15% 0%, 85% 0%, 100% 0, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
   & div {
     position: relative;
     top: 50%;
@@ -154,14 +157,30 @@ $secondary2: rgb(86, 79, 204);
     }
 
     & h4{
-      color:rgba(250,250,250,0.5);
+      color:white;
       font-family: "Fugaz One", cursive;
+      position: relative;
+      display: inline-block;
+      z-index:1;
+
+      &::before{
+        content: "";
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        position: absolute;
+        top: -11px;
+        left: -13px;
+        z-index: 0;
+        background: linear-gradient(21deg, #7148bd, #8585c4);
+      }
 
     }
 
     & h1 {
       font-size: 50px;
-      color:rgba(255, 255,255, 0.7)
+      color:rgba(255, 255,255, 0.7);
+      font-family: serif;
     }
   }
 }
@@ -201,10 +220,11 @@ $secondary2: rgb(86, 79, 204);
     }
     &:hover > {
       & .details {
-        background:  rgba(0, 0, 200, 0.5);
         color:#fff;
         transform-origin: bottom left;
-        animation:zoomIn 0.3s
+        animation:zoomIn 0.3s;
+      background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0));
+
 
 
       }
@@ -295,6 +315,7 @@ $secondary2: rgb(86, 79, 204);
 
   
 .banner {
+  clip-path: polygon(0% 15%, 0 0, 15% 0%, 85% 0%, 100% 0, 100% 15%, 100% 85%, 85% 85%, 85% 92%, 15% 92%, 15% 85%, 0% 85%);
   & div {
     & h1,
     h4 {

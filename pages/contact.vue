@@ -23,11 +23,11 @@
               <div class="heading wow bounceInLeft">
                 <h1>Stay In Touch</h1>
               </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo amet unde excepturi!</p>
+              <p>Please fill he form below if you have an argent call. Thank you</p>
               <div class="ui positive message" v-if="success">
                 <i class="close icon" @click="hideMes"></i>
                 <div class="header">Message Sent</div>
-                <p>THanks for your contact, we will get back to you soon</p>
+                <p>Thank you, we will get back to you soon</p>
               </div>
               <div class="field">
                 <label for="fullname">Fullname</label>
@@ -79,7 +79,29 @@
                 <i class="icon envelope outline"></i>
                 <a href="mail:admin@mail.com">admin@mail.com</a>
               </li>
+
+                  <button class="ui facebook button">
+                  <i class="facebook icon"></i>
+                  Facebook
+                </button>
+                <button class="ui twitter button">
+                  <i class="twitter icon"></i>
+                  Twitter
+                </button>
+                <button class="ui linkedin button">
+                  <i class="linkedin icon"></i>
+                  LinkedIn
+                </button>
+                <button class="ui instagram button">
+                  <i class="instagram icon"></i>
+                  Instagram
+                </button>
+                <button class="ui youtube button" style="margin-top:10px">
+                  <i class="youtube icon"></i>
+                  YouTube
+                </button>
             </ul>
+          
           </div>
         </div>
         <!-- <div class="pre-loader"></div> -->
