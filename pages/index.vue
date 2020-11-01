@@ -26,7 +26,7 @@
 
     <div class="vid-grid" >
       <div class="items wow slideInUp"  :data-wow-delay="(index * 0.2)+'s'" v-for="(image, index) in feeds" :key="index" @click="setIndex(index)">
-        <img :src="image.thumb" width="100%" height="100%" alt="evs" />
+        <img :src="image.thumb" width="100%"  alt="evs" />
         <div class="details">{{ image.category }}</div>
          <div class="play"> <i class="play icon" style="font-size:30px;line-height:30px"></i></div>
       </div>
@@ -222,6 +222,10 @@ $secondary: rgb(86, 79, 204);
     cursor: pointer;
     position: relative;
     
+    img{
+      object-fit: cover;
+      height:100%
+    }
     & .play{
       position:absolute;
       color:rgba(255, 255, 255, 1);

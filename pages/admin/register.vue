@@ -35,7 +35,7 @@
     </div>
     <div v-else style="margin:auto;max-width:550px;margin-top:200px">
          <div class="ui floating message blue">
-          <p>This View has been removed</p>
+          <p>This View has been reoved</p>
         </div>
     </div>
   
