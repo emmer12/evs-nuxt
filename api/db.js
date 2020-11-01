@@ -4,7 +4,7 @@ mongoose.connect('mongodb://localhost/evs',{useNewUrlParser:true,useUnifiedTopol
 let db=mongoose.connection;
 db.once('open',function(){
   console.log('====================================');
-  console.log("Zobo api connected");
+  console.log("EVS api connected");
   console.log('====================================');
 });
 db.on('error',function(err) {

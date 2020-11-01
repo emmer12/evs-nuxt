@@ -1,8 +1,10 @@
 <template>
   <!-- <slider-view></slider-view> -->
-  <div>
-    <div class="banner">
-      <div>
+  <div  v-if="!loading">
+    <!-- :style="`background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${imageUrl})`" -->
+    <div  class="banner">
+      <img :src="imageUrl" alt="EVS" >
+      <div class="content">
         <div class="column wow zoomIn" style="cursor:pointer" @click="setIndex(0)">
           <i class="play icon" style="font-size:40px;line-height:40px"></i>
         </div>
@@ -63,7 +65,7 @@ export default {
     return {
       leaving: false,
       index: null,
-      loading: false
+      loading: true
     };
   },
   methods: {
@@ -93,7 +95,10 @@ export default {
     },
     feeds() {
       return this.$store.getters.evsFeeds;
-      
+    },
+
+    imageUrl(){
+      return this.feeds[0].thumb
     }
   },
 
@@ -134,15 +139,32 @@ $secondary: rgb(86, 79, 204);
 }
 
 .banner {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("~assets/images/works/w13.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+  img{
+    // display:none;
+    position:relative;
+    object-fit: cover;
+    z-index: -1;
+    width:100%;
+    height: 90vh;
+    display:block;
+    opacity:0.7;
+    // overflow:hidden
+  }
+  .content{
+    display:bold;
+    position: absolute;
+    z-index: 111;
+    left:50%;
+    transform: translateX(-50%);
+  }
   background-repeat: no-repeat;
   background-size: cover;
   height: 90vh;
   width: 100vw;
   text-align: center;
   // clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 100% 100%, 85% 100%, 15% 100%, 0 100%, 0% 85%);
-  clip-path: polygon(0% 15%, 0 0, 15% 0%, 85% 0%, 100% 0, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
+  // clip-path: polygon(0% 15%, 0 0, 15% 0%, 85% 0%, 100% 0, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
   & div {
     position: relative;
     top: 50%;
@@ -179,8 +201,9 @@ $secondary: rgb(86, 79, 204);
 
     & h1 {
       font-size: 50px;
-      color:rgba(255, 255,255, 0.7);
+      color:rgba(255, 255,255,1);
       font-family: serif;
+      
     }
   }
 }

@@ -17,7 +17,7 @@
                     </div>
             </div>
             <!-- <validation-provider rules="required" v-slot="{ errors }" > -->
-                <div class="field" :class="{error:true}">
+                <div class="field">
                     <label>Username</label>
                     <input type="text" name="username" required placeholder="Username" v-model="newUser.username">
                     <span class="error">{{"errors"}}</span>
