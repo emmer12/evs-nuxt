@@ -15,8 +15,8 @@
               </li>
               <li>
                 <router-link
-                  :class="{'active':$route.params.category==='Music'}"
-                  :to="{name:'category',params:{category:'music-video'}}"
+                  :class="{'active':$route.name==='music'}"
+                  :to="{name:'music'}"
                 >
                   Music Videos
                   <i class="fas fa-file-video"></i>
@@ -24,20 +24,20 @@
               </li>
               <li>
                 <router-link
-                  :class="{'active':$route.params.category==='Wedding'}"
-                  :to="{name:'category',params:{category:'wedding'}}"
+                  :class="{'active':$route.name==='wedding'}"
+                  :to="{name:'wedding'}"
                 >Wedding</router-link>
               </li>
               <li>
                 <router-link
-                  :class="{'active':$route.params.category==='Film'}"
-                  :to="{name:'category',params:{category:'film'}}"
+                  :class="{'active':$route.name==='film'}"
+                  :to="{name:'film'}"
                 >Film</router-link>
               </li>
               <li>
                 <router-link
-                  :class="{'active':$route.params.category==='Commercial'}"
-                  :to="{name:'category',params:{category:'commercial'}}"
+                  :class="{'active':$route.name==='commercial'}"
+                  :to="{name:'commercial'}"
                 >Commercial/Extra</router-link>
               </li>
               <li>
@@ -88,8 +88,8 @@
             </li>
             <li>
               <router-link
-                :class="{'active':$route.params.category==='service'}"
-                :to="{name:'category',params:{category:'Music'}}"
+                :class="{'active':$route.name==='music'}"
+               :to="{name:'music'}"
               >
                 Music Video
                 <i class="fas fa-file-video"></i>
@@ -97,20 +97,20 @@
             </li>
             <li>
               <router-link
-                :class="{'active':$route.params.category==='Wedding'}"
-                :to="{name:'category',params:{category:'Wedding'}}"
+                :class="{'active':$route.name==='wedding'}"
+              :to="{name:'wedding'}"
               >Wedding</router-link>
             </li>
             <li>
               <router-link
-                :class="{'active':$route.params.category==='Film'}"
-                :to="{name:'category',params:{category:'Film'}}"
+                :class="{'active':$route.name==='film'}"
+                :to="{name:'film'}"
               >Film</router-link>
             </li>
             <li>
               <router-link
-                :class="{'active':$route.params.categor==='Commercial'}"
-                :to="{name:'category',params:{category:'Commercial'}}"
+                :class="{'active':$route.name==='Commercial'}"
+                :to="{name:'commercial'}"
               >Commercial/Extra</router-link>
             </li>
             <li>

@@ -46,6 +46,8 @@
     <!-- <LightBox :media="media" :autoPlay="true"></LightBox> -->
 
     <div :class="{'leaving':leaving}"></div>
+    <div :class="{'entring':entring}" ></div>
+
     <div style="height:100px"></div>
   </div>
 </template>
@@ -64,6 +66,7 @@ export default {
   data() {
     return {
       leaving: false,
+      entring: false,
       index: null,
       loading: true
     };
@@ -101,6 +104,13 @@ export default {
       return this.feeds[0].thumb
     }
   },
+   created() {
+    this.entring = true;
+    let tis = this;
+    setTimeout(function() {
+      tis.entring = false;
+    }, 550);
+  },
 
   beforeRouteLeave(to, from, next) {
     this.leaving = true;
@@ -112,31 +122,7 @@ export default {
 </script>
 
 
-<style lang="scss" >
-@import url("https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap");
-$color: #8783ce;
-$secondary: rgb(86, 79, 204);
-.heading {
-  & h1 {
-    color: #555;
-    font-size: 30px;
-    padding: 10px;
-    letter-spacing: 4px;
-    font-family: "Fugaz One", cursive;
-    position: relative;
-    margin: 10px;
-  }
-
-  & ::after {
-    content: "";
-    position: absolute;
-    height: 3px;
-    width: 100px;
-    background: #555;
-    bottom: 0px;
-    left: 0px;
-  }
-}
+<style lang="scss">
 
 .banner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
@@ -157,6 +143,7 @@ $secondary: rgb(86, 79, 204);
     z-index: 111;
     left:50%;
     transform: translateX(-50%);
+    width:100%;
   }
   background-repeat: no-repeat;
   background-size: cover;
@@ -204,57 +191,6 @@ $secondary: rgb(86, 79, 204);
       color:rgba(255, 255,255,1);
       font-family: serif;
       
-    }
-  }
-}
-
-.vid-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
-  margin-top: 25px;
-  margin-left: 25px;
-  margin-right: 25px;
-  & .items {
-  // box-shadow: 2px 3px 10px #666; 
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 1));
-    height: 200px;
-    cursor: pointer;
-    position: relative;
-    
-    img{
-      object-fit: cover;
-      height:100%
-    }
-    & .play{
-      position:absolute;
-      color:rgba(255, 255, 255, 1);
-      left:50%;
-      top:50%;
-      transform:translate(-50%,-50%);
-    }
-    & .details {
-    transition: 1s;
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      top: 0;
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.1));
-      color: rgba(255, 255, 255, 0.7);
-      padding: 10px;
-      font-size: 16px;
-      font-weight: 700;
-    }
-    &:hover > {
-      & .details {
-        color:#fff;
-        transform-origin: bottom left;
-        animation:zoomIn 0.3s;
-      background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0));
-
-
-
-      }
     }
   }
 }
@@ -342,7 +278,7 @@ $secondary: rgb(86, 79, 204);
 
   
 .banner {
-  clip-path: polygon(0% 15%, 0 0, 15% 0%, 85% 0%, 100% 0, 100% 15%, 100% 85%, 85% 85%, 85% 92%, 15% 92%, 15% 85%, 0% 85%);
+  // clip-path: polygon(0% 15%, 0 0, 15% 0%, 85% 0%, 100% 0, 100% 15%, 100% 85%, 85% 85%, 85% 92%, 15% 92%, 15% 85%, 0% 85%);
   & div {
     & h1,
     h4 {

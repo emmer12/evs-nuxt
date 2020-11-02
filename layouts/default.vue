@@ -6,6 +6,85 @@
 </template>
 <style src="cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css"></style>
 <style lang="scss">
+.heading {
+  & h1 {
+    color: #555;
+    font-size: 30px;
+    padding: 10px;
+    letter-spacing: 4px;
+    font-family: "Fugaz One", cursive;
+    position: relative;
+    margin: 10px;
+  }
+
+  & ::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 100px;
+    background: #555;
+    bottom: 0px;
+    left: 0px;
+  }
+}
+
+.vid-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  margin-top: 25px;
+  margin-left: 25px;
+  margin-right: 25px;
+  & .items {
+  // box-shadow: 2px 3px 10px #666; 
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 1));
+    height: 220px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    img{
+      object-fit: cover;
+      height:100%;
+      border-radius: 10px;
+
+    }
+    & .play{
+      position:absolute;
+      color:rgba(255, 255, 255, 1);
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+    }
+    & .details {
+    transition: 1s;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.1));
+      color: rgba(255, 255, 255, 0.7);
+      padding: 10px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    &:hover > {
+      & .details {
+        color:#fff;
+        transform-origin: bottom left;
+        animation:zoomIn 0.3s;
+      background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0));
+
+
+
+      }
+    }
+  }
+}
+
+
+
+
 
 .load-con{
   background: #ddd;

@@ -109,7 +109,7 @@
     </div>
     <br />
     <br />
-    <!-- <div :class="{'entring':entring}" ></div> -->
+    <div :class="{'entring':entring}" ></div>
   </div>
 </template>
 <script>
@@ -155,7 +155,7 @@ export default {
     let tis = this;
     setTimeout(function() {
       tis.entring = false;
-    }, 950);
+    }, 600);
   },
   mounted() {},
   computed: {}

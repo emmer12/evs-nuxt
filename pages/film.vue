@@ -1,15 +1,13 @@
 <template>
   <div>
     <div class="heading wow bounceInLeft">
-      <h1 v-if="feeds.length">{{feeds[0].category.charAt(0).toUpperCase() + feeds[0].category.substr(1) }}</h1>
-      <!-- <h1 else>{{$route.params.category.charAt(0).toUpperCase() + $route.params.category.substr(1) }}</h1> -->
-
+      <h1 v-if="feeds.length">Films</h1>
     </div>
 
     <div class="container">
       <div v-if="!feeds.length && !loading">
       <div class="heading wow bounceInLeft">
-      <h1 else>{{$route.params.category.charAt(0).toUpperCase() + $route.params.category.substr(1) }}</h1>
+      <!-- <h1 else>{{$route.params.category.charAt(0).toUpperCase() + $route.params.category.substr(1) }}</h1> -->
 
      </div>
 
@@ -53,7 +51,7 @@
 
     <div style="height:100px"></div>
     <div :class="{'leaving':leaving}"></div>
-    <!-- <div :class="{'entring':entring}" ></div> -->
+    <div :class="{'entring':entring}" ></div>
   </div>
   <!-- <style src="slick-carousel/slick/slick.css"></style> -->
 </template>
@@ -87,7 +85,7 @@ export default {
       }
     },
     getByCat() {
-      this.$store.dispatch("getByCat", this.$route.params.category).then(() => {
+      this.$store.dispatch("getByCat",'film').then(() => {
         this.loading = false;
       });
     }
@@ -106,7 +104,7 @@ export default {
     let tis = this;
     setTimeout(function() {
       tis.entring = false;
-    }, 950);
+    }, 600);
   },
   watch: {
     $route() {
