@@ -90,4 +90,4 @@ sw.*
 
 static/uploads
 
-nuxt.config
+.nuxt.config

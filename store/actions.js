@@ -1,15 +1,13 @@
-import axios from 'axios'
-
 
 export default {
         
 
         register(context,data){
             return new Promise((resolve,reject)=>{
-                axios.post('/register',data)
+                this.$axios.$post('/register',data)
                 .then(response=>{
                     alert(response)
-                    let token =response.data.token;
+                    let token =response.token;
                     localStorage.setItem('token',token)
                     
                     context.commit("retrieveToken",token)
@@ -22,9 +20,9 @@ export default {
         },
     
         postNewData(context,data){       
-            axios.defaults.headers.common['Authorization']=this.$auth.getToken('local')
+            this.$axios.defaults.headers.common['Authorization']=this.$auth.getToken('local')
             return new Promise((resolve,reject)=>{ 
-                axios.post('/create-feed',data)
+                this.$axios.$post('/create-feed',data)
                 .then(response=>{
                    console.log("sucessss");
                     // context.commit("retrieveToken",token)
@@ -42,7 +40,7 @@ export default {
 
         sendMessage(context,data){       
             return new Promise((resolve,reject)=>{ 
-                axios.post('/contact-message',data)
+                this.$axios.$post('/contact-message',data)
                 .then(response=>{
                    console.log("sucessss");
                     // context.commit("retrieveToken",token)
@@ -57,7 +55,7 @@ export default {
 
 
         updateData(context,data){
-            axios.defaults.headers.common['Authorization']='Bearer ' + context.state.token
+            this.$axios.defaults.headers.common['Authorization']='Bearer ' + context.state.token
             return new Promise((resolve,reject)=>{
                 let formData1=new FormData();
                 formData1.append('id',data.id);
@@ -65,7 +63,7 @@ export default {
                 formData1.append('title',data.title);
                 formData1.append('description',data.description);
                 
-                axios.post('/updatepost',formData1)
+                this.$axios.$post('/updatepost',formData1)
                 .then(response=>{
                    console.log("sucessss");
                     resolve(response)
@@ -78,12 +76,13 @@ export default {
             })
         },
         getEvsFeed(context){
-            axios.defaults.headers.common['Authorization']=this.$auth.getToken('local')
+            this.$axios.defaults.headers.common['Authorization']=this.$auth.getToken('local')
 
             return new Promise((resolve,reject)=>{
-                axios.get('/get-feed')
+                this.$axios.$get('/get-feed')
                 .then(response=>{
-                    context.commit("getEvsFeed",response.data.feeds)
+                    console.log(response)
+                    context.commit("getEvsFeed",response.feeds)
                     resolve(response.data)
                 })
                 .catch(err=>{
@@ -93,12 +92,12 @@ export default {
          })
         },
         getById(context,id){
-            axios.defaults.headers.common['Authorization']="Bearer " + context.state.token
+            this.$axios.defaults.headers.common['Authorization']="Bearer " + context.state.token
                 return new Promise((resolve,reject)=>{
-                axios.get('/getpost/' + id)
+                this.$axios.$get('/getpost/' + id)
                 .then(response=>{
-                    context.commit("getById",response.data.data)
-                    resolve(response.data.data)
+                    context.commit("getById",response.data)
+                    resolve(response.data)
                 })
                 .catch(err=>{
                     console.log(err);
@@ -108,10 +107,10 @@ export default {
         getByCat(context,category){
 
                 return new Promise((resolve,reject)=>{
-                axios.get('/feed-category/' + category)
+                this.$axios.$get('/feed-category/' + category)
                 .then(response=>{
-                    context.commit("getByCat",response.data.category)
-                    resolve(response.data.data)
+                    context.commit("getByCat",response.category)
+                    resolve(response.data)
                 })
                 .catch(err=>{
                     console.log(err);
@@ -122,10 +121,10 @@ export default {
         getMessage(context){
 
             return new Promise((resolve,reject)=>{
-            axios.get('/get-inbox' )
+            this.$axios.$get('/get-inbox' )
             .then(response=>{
-                context.commit("setInbox",response.data.inbox)
-                resolve(response.data.inbox)
+                context.commit("setInbox",response.inbox)
+                resolve(response.inbox)
             })
             .catch(err=>{
                 console.log(err);
@@ -133,8 +132,8 @@ export default {
     })
     },
         deletePost(context,id){
-            axios.defaults.headers.common['Authorization']=this.$auth.getToken('local')
-            axios.delete('/delete-feed/'+id)
+            this.$axios.defaults.headers.common['Authorization']=this.$auth.getToken('local')
+            this.$axios.$delete('/delete-feed/'+id)
             .then(()=>{
                 context.commit("deletePost",id)
             })
@@ -144,14 +143,14 @@ export default {
         },
 
         uploadFile(context,data){
-            axios.defaults.headers.common['Authorization']=this.$auth.getToken('local')
+            this.$axios.defaults.headers.common['Authorization']=this.$auth.getToken('local')
             return new Promise((resolve,reject)=>{                
                 let formData=new FormData();
                 
                 formData.append('file',data.file);
                 formData.append('field',data.field);
 
-                axios.post('/upload-file',formData,{
+                this.$axios.$post('/upload-file',formData,{
                     onUploadProgress:progressEvent=>{
                         let progress=Math.round(progressEvent.loaded/progressEvent.total*100)
                         context.commit("uploadProgress",progress)
@@ -169,11 +168,11 @@ export default {
         },
 
         getCategory(context){
-            axios.defaults.headers.common['Authorization']=this.$auth.getToken('local')
+            this.$axios.defaults.headers.common['Authorization']=this.$auth.getToken('local')
             return new Promise((resolve,reject)=>{
-                axios.get('/category')
+                this.$axios.$get('/category')
                 .then(response=>{
-                    context.commit("getCategory",response.data.category)
+                    context.commit("getCategory",response.category)
                     resolve()
                 })
                 .catch(err=>{
@@ -183,9 +182,9 @@ export default {
             })
         },
         saveCategory(context,data){
-            axios.defaults.headers.common['Authorization']=this.$auth.getToken('local')
+            this.$axios.defaults.headers.common['Authorization']=this.$auth.getToken('local')
             return new Promise((resolve,reject)=>{                
-                axios.post('category',data).then(response=>{
+                this.$axios.$post('category',data).then(response=>{
                     context.dispatch("getCategory")
                     resolve(response);  
                 }).catch(err=>{
@@ -195,10 +194,10 @@ export default {
             })
         },
         deleteCat(context,data){
-            axios.defaults.headers.common['Authorization']=this.$auth.getToken('local')
+            this.$axios.defaults.headers.common['Authorization']=this.$auth.getToken('local')
 
             return new Promise((resolve,reject)=>{ 
-            axios.delete('/delete-cat/'+data)
+            this.$axios.$delete('/delete-cat/'+data)
             .then(response=>{
                 context.commit("deleteCat",data)
                 resolve(response)
@@ -211,10 +210,10 @@ export default {
         },
 
         deleteInbox(context,data){
-            axios.defaults.headers.common['Authorization']=this.$auth.getToken('local')
+            this.$axios.defaults.headers.common['Authorization']=this.$auth.getToken('local')
 
             return new Promise((resolve,reject)=>{ 
-            axios.delete('/delete-inbox/'+data)
+            this.$axios.$delete('/delete-inbox/'+data)
             .then(response=>{
                 context.commit("deleteInbox",data)
                 resolve(response)
@@ -227,7 +226,7 @@ export default {
         },
         getFeeds(context){
             context.commit("isLoading",true)
-            axios.get('/feeds')
+            this.$axios.$get('/feeds')
             .then(response=>{
                 context.commit("getFeeds",response.data)
                 context.commit("isLoading",false)

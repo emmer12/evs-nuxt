@@ -1,8 +1,8 @@
 
 export default {
   /*
-  ** Nuxt rendering mode
-  ** See https://nuxtjs.org/api/configuration-mode
+  ** Nuxt rendering mode 
+  ** See https://nuxtjs.org/api/configuration-mod
   */
   mode: 'universal',
 
@@ -77,7 +77,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/axios',
+     ['@nuxtjs/axios',{baseURL:"http://localhost:3000/api"}],
     '@nuxtjs/auth'
   ],
 

@@ -127,8 +127,6 @@
     overflow: hidden;
     top:14px
    }
-
-
   
 }
 
