@@ -2,7 +2,7 @@
 export default {
   /*
   ** Nuxt rendering mode 
-  ** See https://nuxtjs.org/api/configuration-mod
+  ** See https://nuxtjs.org/api/configuration-mode
   */
   mode: 'universal',
 
