@@ -33,26 +33,24 @@ router.get('/update/evs/feed',function(req,res){
   "src":"https://exclusivevisuals.studio/uploads/file-1604247355781wedding video.mp4"
     }
   }).then(()=>{
+      Feed.update({ "_id" : "5f9ee23575d32675dbfc7e49"},{$set:{
+  "thumbnail":"https://exclusivevisuals.studio/uploads/file-16042481107992020-11-01 Mofetolu Music ( mofetolu) • Instagram photos and videos.png",
+  "src":"https://exclusivevisuals.studio/uploads/file-1604248049706118215145_3143735985739115_9156349120643127147_n.mp4"
+    }
+  })
+}).then(()=>{
+  Feed.update({ "_id" : "5f9ee559ac2aebc7808a4ed8"
+  },{$set:{
+  "thumbnail":"https://exclusivevisuals.studio/uploads/file-1604248845095Screenshot_2020-11-01 Exclusive Visuals ( exclusivevisuals) • Instagram photos and videos.png",
+  "src":"https://exclusivevisuals.studio/uploads/file-1604248887516Chicago Fashion.mp4"
+    }
+  })
+  }).then(()=>{
     res.status(200).json({
       success:true
     })
   })
 })
-
-// .then(()=>{
-//   Feed.update({ "_id" : ObjectId("5f9ee23575d32675dbfc7e49")},{$set:{
-// "thumbnail":"https://exclusivevisuals.studio/uploads/file-16042481107992020-11-01 Mofetolu Music ( mofetolu) • Instagram photos and videos.png",
-// "src":"https://exclusivevisuals.studio/uploads/file-1604248049706118215145_3143735985739115_9156349120643127147_n.mp4"
-// }
-// })
-// }).then(()=>{
-// Feed.update({ "_id" : ObjectId("5f9ee559ac2aebc7808a4ed8")
-// },{$set:{
-// "thumbnail":"https://exclusivevisuals.studio/uploads/file-1604248845095Screenshot_2020-11-01 Exclusive Visuals ( exclusivevisuals) • Instagram photos and videos.png",
-// "src":"https://exclusivevisuals.studio/uploads/file-1604248887516Chicago Fashion.mp4"
-// }
-// })
-// })
 
 
 
