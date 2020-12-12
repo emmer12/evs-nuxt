@@ -32,6 +32,8 @@ router.get('/update/evs/feed',function(req,res){
   "thumbnail":"https://exclusivevisuals.studio/uploads/file-16042481107992020-11-01 Mofetolu Music ( mofetolu) • Instagram photos and videos.png",
   "src":"https://exclusivevisuals.studio/uploads/file-1604248049706118215145_3143735985739115_9156349120643127147_n.mp4"
     }
+  }).exec(function(err,data) {
+    res.send('yello')
   })
 })
 
