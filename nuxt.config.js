@@ -77,15 +77,15 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-     ['@nuxtjs/axios',{baseURL:process.env.BASE_URL}],
+    '@nuxtjs/axios',
     '@nuxtjs/auth',
     '@nuxtjs/proxy'
 
   ],
 
   axios:{
-    proxy:true
-  }
+    baseURL:process.env.BASE_URL
+  },
   proxy: {
     '/api/': {
       target:process.env.URL,
@@ -94,7 +94,7 @@ export default {
         },
      changeOrigin:true
       }
-  ],
+    },
   auth: {
     strategies: {
       local: {
