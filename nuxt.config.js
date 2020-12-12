@@ -77,10 +77,24 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-     ['@nuxtjs/axios',{baseURL:"http://localhost:3000/api"}],
-    '@nuxtjs/auth'
+     ['@nuxtjs/axios',{baseURL:process.env.BASE_URL}],
+    '@nuxtjs/auth',
+    '@nuxtjs/proxy'
+
   ],
 
+  axios:{
+    proxy:true
+  }
+  proxy: {
+    '/api/': {
+      target:process.env.URL,
+      pathRewrite: {
+        '^/api' : ''
+        },
+     changeOrigin:true
+      }
+  ],
   auth: {
     strategies: {
       local: {
